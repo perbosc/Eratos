@@ -1,0 +1,632 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	
+	<TITLE>éphéméride 2016</TITLE>
+	
+
+	
+</HEAD>
+<BODY style="background-color:#EEEEFF">
+<script>
+function calcule()
+{
+numero =  document.dateJour.ville.selectedIndex;
+var a = document.dateJour.aaaa.value;
+var m = document.dateJour.mm.value-1;
+var j = document.dateJour.jj.value;
+var aujourdhui = new Date(a,m,j,12,0,0 );
+if (numero ==1 )
+{lieu = "TROPIC of CANCER" ; dd1 = 23 ; }
+else
+{
+if (numero ==2 )
+{lieu = "EQUATOR" ; dd1 = 0 ; }
+else
+{
+if (numero ==3 )
+{lieu = "TROPIC of CAPRICORN" ; dd1 = -23 ; }
+else
+{
+if (numero ==4 )
+{lieu = "Aigio GREECE" ; dd1 = 38.252  ; }
+else
+{
+if (numero ==5 )
+{lieu = "Allahabad INDIA" ; dd1 = 25.327 ; }
+else
+{
+if (numero ==6 )
+{lieu = "Anisacate BRAZIL" ; dd1 = -31.717  ; }
+else
+{
+if (numero ==7 )
+{lieu = "Ano Komi GREECE" ; dd1 = 40.226  ; }
+else
+{
+if (numero ==8 )
+{lieu = "Athens GREECE" ; dd1 = 38.037  ; }
+else
+{
+if (numero ==9 )
+{lieu = "Ben Arous  TUNISIA" ; dd1 = 36.75  ; }
+else
+{
+if (numero ==10 )
+{lieu = "Busteni  , ROMANIA" ; dd1 = 45.416 ; }
+else
+{
+if (numero ==11 )
+{lieu = "Chania GREECE" ; dd1 = 35.485  ; }
+else
+{
+if (numero ==12)
+{lieu = "Dholpur INDIA" ; dd1 = 26.718 ;  }
+else
+{
+if (numero ==13 )
+{lieu = "Donji Muc CROATIA" ; dd1 = 43.694  ; }
+
+{
+if (numero ==14 )
+{lieu = "Durdevac CROATIA" ; dd1 = 46.038   ; }
+
+
+
+else
+{
+if (numero ==15 )
+{lieu = "Grevena GREECE" ; dd1 = 40.086 ;  }
+else
+{
+if (numero ==16 )
+{lieu = "Imbassai BRAZIL" ; dd1 = -12.491 ;  }
+else
+{
+if (numero ==17 )
+{lieu = "Ioannina GREECE" ; dd1 = 39.667 ;  }
+else
+{
+if (numero ==18 )
+{lieu = "Kaohsiung TAIWAN" ; dd1 = 22.621 ;  }
+else
+{
+if (numero ==19 )
+{lieu = "Komotini GREECE" ; dd1 = 41.121 ;  }
+else
+{
+if (numero ==20 )
+{lieu = "Krokos GREECE" ; dd1 = 40.265 ;  }
+else
+{
+if (numero ==21 )
+{lieu = "Kuantan MALAYSIA" ; dd1 = 3.827 ;  }
+else
+{
+if (numero ==22 )
+{lieu = "Lafrancaise FRANCE" ; dd1 = 44.127 ;  }
+else
+{
+if (numero ==23 )
+{lieu = "Parintins BRAZIL" ; dd1 = -2.628 ;  }
+else
+{
+if (numero ==24 )
+{lieu = "Pastida GREECE" ; dd1 = 36.385 ;  }
+else
+{
+if (numero ==25 )
+{lieu = "Paysandu URUGUAY" ; dd1 = -32.316 ;  }
+else
+{
+if (numero ==26 )
+{lieu = "Pylos GREECE" ; dd1 = 36.911 ;  }
+else
+{
+if (numero ==27 )
+{lieu = "Rio de Janeiro BRAZIL" ; dd1 = -22.89 ;  }
+else
+{
+if (numero ==28 )
+{lieu = "Schimatari GREECE" ; dd1 = 38.352 ;  }
+else
+{
+if (numero ==29 )
+{lieu = "Sfax TUNISIA" ; dd1 = 34.789 ;  }
+else
+{
+if (numero ==30 )
+{lieu = "Shenzhen CHINA" ; dd1 = 22.549 ;  }
+else
+{
+if (numero ==31 )
+{lieu = "Tunis TUNISIA" ; dd1 = 36.795 ;  }
+else
+{
+if (numero ==32 )
+{lieu = "Yamunanagar INDIA" ; dd1 = 30.133 ;  }
+
+else
+{lieu = "Choisir la ville / Choose the city" ; dd1 = 0 ; }
+
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+
+
+document.diff.coord.value = lieu;
+
+
+
+
+
+var latDeg = dd1;
+var latDegreDD = dd1;
+
+
+
+var DatePrintemps16 = new Date(2016, 2, 20, 4, 30, 0);
+var DateAutomne16 = new Date(2016, 8, 22, 14, 21, 0);
+
+
+var periodeAn = 365.25 ;
+
+if (m>=6 )
+{ var ecart = (aujourdhui.getTime() - DateAutomne16.getTime()); 
+var signeDecli = -1 ;
+}
+else
+{var ecart = (aujourdhui.getTime() - DatePrintemps16.getTime()); 
+var signeDecli = 1 ; }
+
+
+
+
+var ecartJour = ecart/(24*3600*1000) ;
+var Phase = ecartJour*2*3.1415926 / periodeAn;
+var declinaison = 23.450*Math.sin(Phase);
+
+
+if (numero==0 )
+{ var hauteurV= 0; }
+else
+{var hauteurV = latDegreDD - signeDecli*declinaison ; }
+
+var arondiHauteurV    = Math.abs(Math.round(10*hauteurV) / 10);
+var entDegreV = arondiHauteurV; 
+var hauteur = 90 - latDegreDD + signeDecli*declinaison ;
+
+if (hauteurV>=0 )
+{affHauteur= arondiHauteurV;
+affOmbre=Math.round(1000/Math.tan(hauteur*3.1415927/180)) / 10;
+affdd1= entDegreV;
+}
+else
+{affHauteur= arondiHauteurV; 
+affOmbre=Math.round(1000/Math.tan(hauteur*3.1415927/180)) / 10;
+affdd1= entDegreV;
+}
+
+
+
+if (numero==0 )
+{ var shadow= 0; }
+else
+{var shadow =  Math.round(1000/Math.tan(hauteur*3.1415927/180)) / 10 + " cm"; }
+document.diff.ombre.value = shadow;
+
+
+affAngle = " "  + + affHauteur + " ° ";
+affLongOmbre = " " + affOmbre + " cm    ";
+
+document.diff.dd1.value =  " "  + dd1  + " °";;
+document.diff.deg.value = affAngle;
+document.diff.ombre.value = affLongOmbre;
+
+
+if (numero ==1 )
+{longdd1= " " ; }
+else
+{
+if (numero ==2 )
+{longdd1= " " ;  }
+else
+{
+if (numero ==3 )
+{longdd1= " " ;  }
+else
+{
+if (numero ==4 )
+{longdd1= 22.079 ; }
+else
+{
+if (numero ==5 )
+{longdd1= 81.823 ; }
+else
+{
+if (numero ==6 )
+{longdd1= -64.4 ; }
+else
+{
+if (numero ==7 )
+{longdd1= 21.831 ; }
+else
+{
+if (numero ==8 )
+{longdd1= 23.712 ; }
+else
+{
+if (numero ==9 )
+{longdd1= 10.222 ;  }
+else
+{
+if (numero ==10 )
+{longdd1= 25.535 ; }
+else
+{
+if (numero ==11 )
+{longdd1= 24.082 ; }
+else
+{
+if (numero ==12 )
+{longdd1= 77.845 ;  }
+else
+{
+if (numero ==13 )
+{longdd1= 16.462 ; }
+
+else
+{
+if (numero ==14 )
+{longdd1= 17.066 ; }
+
+
+
+else
+{
+if (numero ==15 )
+{longdd1= 21.424 ; }
+else
+{
+if (numero ==16 )
+{longdd1= -37.955 ; }
+else
+{
+if (numero ==17 )
+{longdd1= 20.85 ; }
+else
+{
+if (numero ==18 )
+{longdd1= 120.354 ; }
+else
+{
+if (numero ==19 )
+{longdd1= 25.395 ; }
+else
+{
+if (numero ==20 )
+{longdd1= 21.815 ; }
+else
+{
+if (numero ==21 )
+{longdd1= 103.339 ; }
+else
+{
+if (numero ==22 )
+{longdd1= 1.237 ; }
+else
+{
+if (numero ==23 )
+{longdd1= -56.736 ; }
+else
+{
+if (numero ==24 )
+{longdd1= 28.138 ; }
+else
+{
+if (numero ==25 )
+{longdd1= -58.093 ; }
+else
+{
+if (numero ==26 )
+{longdd1= 21.69 ; }
+else
+{
+if (numero ==27 )
+{longdd1= -43.317 ; }
+else
+{
+if (numero ==28 )
+{longdd1= 23.573 ; }
+else
+{
+if (numero ==29 )
+{longdd1= 10.78 ; }
+else
+{
+if (numero ==30 )
+{longdd1= 114.092 ; }
+else
+{
+if (numero ==31 )
+{longdd1= 10.177 ; }
+else
+{
+if (numero ==32 )
+{longdd1= 77.283 ; }
+
+else
+{ longdd1 = 0; }
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+
+var longDeg = longdd1;
+var longDegreDD = longdd1;
+
+
+
+
+var Date3janvier = new Date(2008, 12, 3, 0, 0, 0);
+
+
+var Phase2 = ecartJour*4*3.1415927 / periodeAn;
+var kepler = -592 / 60*Math.sin(Phase2);
+
+var ecart3Janvier = (aujourdhui.getTime() - Date3janvier.getTime());
+var ecartJour3Janvier = ecart3Janvier/(24*3600*1000) ;
+var Phase3Janvier = ecartJour3Janvier*2*3.1415927 / periodeAn;
+var ecliptique = 460 / 60*Math.sin(Phase3Janvier);
+
+var corLongitude = -4*longDegreDD;
+var cor =(kepler+ecliptique+corLongitude); 
+var min = Math.round(cor);
+var hTU = Math.round(min/60);
+var mTU = min-60*hTU;
+
+if (numero<=3 )
+{ var timer= " "; }
+else
+{
+
+if (mTU >=0)
+ { 
+if (mTU>=10 )
+{heureS=(hTU+12)+":"+mTU; }
+else
+{heureS=(hTU+12)+":0"+mTU; }
+}
+else
+{
+if (mTU>=-50 )
+{heureS= (hTU+11) +":"+(60+mTU); }
+else
+{heureS=(hTU+11)+ ":0"+(60+mTU); }
+}}
+
+affMidi = " " + heureS + " (UT) ";
+document.diff.MidiLegal.value =affMidi;
+
+
+document.diff.longdd1.value =  " "  + longdd1 + " °";
+
+
+}
+
+
+
+</script>
+
+
+<div align="center">
+
+<FORM NAME="dateJour" ACTION="#">
+	<TABLE WIDTH=233 BORDER=0 CELLPADDING=3 CELLSPACING=0 STYLE="page-break-before: always">
+		<COL WIDTH=57>
+		<COL WIDTH=52>
+		<COL WIDTH=87>
+		<COL WIDTH=5>
+		<TR>
+			<TD WIDTH=57>
+				<FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">day
+				</FONT></FONT>
+				
+			</TD>
+			<TD WIDTH=52 VALIGN=BOTTOM>
+				<FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">month</FONT></FONT>
+			</TD>
+			<TD WIDTH=87 VALIGN=BOTTOM>
+				<P><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">year</FONT></FONT>
+			</TD>
+			<TD WIDTH=5></TD>
+		</TR>
+		<TR>
+			<TD WIDTH=57>
+				<SELECT NAME="jj" >
+					<OPTION VALUE="1">01
+					<OPTION VALUE="2">02
+					<OPTION VALUE="3">03
+					<OPTION VALUE="4">04
+					<OPTION VALUE="5">05
+					<OPTION VALUE="6">06
+					<OPTION VALUE="7">07
+					<OPTION VALUE="8">08
+					<OPTION VALUE="9">09
+					<OPTION VALUE="10">10
+					<OPTION VALUE="11">11
+					<OPTION VALUE="12">12
+					<OPTION VALUE="13">13
+					<OPTION VALUE="14">14
+					<OPTION VALUE="15">15
+					<OPTION VALUE="16">16
+					<OPTION VALUE="17">17
+					<OPTION VALUE="18">18
+					<OPTION VALUE="19">19
+					<OPTION VALUE="20">20
+					<OPTION VALUE="21">21
+					<OPTION VALUE="22">22
+					<OPTION VALUE="23">23
+					<OPTION VALUE="24">24
+					<OPTION VALUE="25">25
+					<OPTION VALUE="26">26
+					<OPTION VALUE="27">27
+					<OPTION VALUE="28">28
+					<OPTION VALUE="29">29
+					<OPTION VALUE="30">30
+					<OPTION VALUE="31">31
+				</SELECT>
+			</TD>
+			<TD WIDTH=52 VALIGN=TOP>
+			<SELECT NAME="mm" >
+					<OPTION VALUE="1">01
+					<OPTION VALUE="2">02
+					<OPTION VALUE="3">03
+					<OPTION VALUE="4">04
+					<OPTION VALUE="5">05
+					<OPTION VALUE="6">06
+					<OPTION VALUE="7">07
+					<OPTION VALUE="8">08
+					<OPTION VALUE="9">09
+					<OPTION VALUE="10">10
+					<OPTION VALUE="11">11
+					<OPTION VALUE="12">12
+				</SELECT>	
+
+
+			</TD>
+			<TD WIDTH=87 VALIGN=TOP>
+			<SELECT NAME="aaaa" >
+					<OPTION VALUE="2016">2016
+					
+					
+				</SELECT>
+
+			</TD>
+			<TD WIDTH=5></TD>
+		</TR>
+		<TR>
+			<TD COLSPAN=3 WIDTH=212>
+				<P><SELECT NAME="ville" STYLE="width: 5.21cm; height: 0.73cm">
+<OPTION VALUE="x" SELECTED>Ville &#24066; City &#1575;&#1604;&#1605;&#1583;&#1610;&#1606;&#1577; Ciudad
+<OPTION VALUE="1">TROPIC of CANCER
+<OPTION VALUE="2">EQUATOR
+<OPTION VALUE="3">TROPIC of CAPRICORN
+<OPTION VALUE="4">Aigio GREECE
+<OPTION VALUE="5">Allahabad INDIA
+<OPTION VALUE="6">Anisacate ARGENTINA 
+<option value="7">Ano Komi GREECE
+<OPTION VALUE="8">Athens  GREECE
+<OPTION VALUE="9">Ben Arous  TUNISIA
+<OPTION VALUE="10">Busteni ROMANIA
+<option value="11">Chania  GREECE
+<option value="12">Dholpur INDIA
+<OPTION VALUE="13">Donji Muc  CROATIA
+<OPTION VALUE="14">Durdevac CROATIA
+<OPTION VALUE="14">Grevena GREECE
+<OPTION VALUE="15">Imbassai BRAZIL
+<option value="16">Ioannina   GREECE
+<option value="17">Kaohsiung TAIWAN
+<OPTION VALUE="18">Komotini GREECE
+<OPTION VALUE="19">Krokos GREECE
+<OPTION VALUE="20">Kuantan MALAYSIA
+<option value="21">Lafrancaise  FRANCE
+<option value="22">Parintins BRAZIL
+<OPTION VALUE="23">Pastida GREECE 
+<OPTION VALUE="24">Paysandu URUGUAY
+<OPTION VALUE="25">Pylos GREECE
+<option value="26">Rio de Janeiro BRAZIL
+<option value="27">Schimatari GREECE
+<OPTION VALUE="28">Sfax  TUNISIA
+<OPTION VALUE="29">Shenzhen  CHINA
+<OPTION VALUE="30">Tunis TUNISIA
+<OPTION VALUE="31">Yamunanagar INDIA
+</OPTION>
+				</SELECT></P>
+			</TD>
+			<TD WIDTH=5></TD>
+		</TR>
+		<TR>
+			<TD COLSPAN=3 WIDTH=212>
+				<P><INPUT TYPE=BUTTON NAME="PushButton" VALUE="compute the ephemeride" STYLE="width: 5.19cm; height: 0.61cm; background: #e6e6e6" ONCLICK="calcule() "></P>
+			</TD>
+			<TD WIDTH=5></TD>
+		</TR>
+	</TABLE>
+</FORM>
+<FORM NAME="diff" ACTION="#">
+	<TABLE WIDTH=233 BORDER=0 CELLPADDING=4 CELLSPACING=0>
+		<COL WIDTH=55>
+		<COL WIDTH=19>
+		<COL WIDTH=124>
+		<COL WIDTH=2>
+		<TR>
+			<TD COLSPAN=3 WIDTH=215>
+				<P><INPUT TYPE=TEXT NAME="coord" SIZE=24 STYLE="width: 5.08cm; height: 0.6cm; background: #e6e6ff"></P>
+			</TD>
+			<TD WIDTH=2></TD>
+		</TR>
+		<TR>
+			<TD WIDTH=55>
+				<P STYLE="font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Latitude</FONT></FONT></P>
+			</TD>
+			<TD COLSPAN=2 WIDTH=152>
+				<P><INPUT TYPE=TEXT NAME="dd1" SIZE=3 STYLE="width: 1.8cm; height: 0.5cm; background: #e6e6ff"></P>
+			</TD>
+			<TD WIDTH=2></TD>
+		</TR>
+		<TR>
+			<TD WIDTH=55>
+				<P STYLE="font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Longitude</FONT></FONT></P>
+			</TD>
+			<TD COLSPAN=2 WIDTH=152>
+				<P><INPUT TYPE=TEXT NAME="longdd1" SIZE=3 STYLE="width: 1.8cm; height: 0.5cm; background: #e6e6ff"></P>
+			</TD>
+			<TD WIDTH=2></TD>
+		</TR>
+		<TR>
+			<TD COLSPAN=2 WIDTH=83>
+				<P STYLE="font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">angle
+				</FONT></FONT>
+				</P>
+			</TD>
+			<TD WIDTH=124 VALIGN=TOP>
+				<P>
+
+				<INPUT TYPE=TEXT NAME="deg" SIZE=3 STYLE="width: 2.2cm; height: 0.5cm; background: #e6e6ff">
+</P>
+			</TD>
+			<TD WIDTH=2></TD>
+		</TR>
+		<TR>
+			<TD COLSPAN=2 WIDTH=83>
+				<P STYLE="font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">shadow
+				length</FONT></FONT></P>
+			</TD>
+			<TD WIDTH=124>
+				<P><INPUT TYPE=TEXT NAME="ombre" SIZE=8 STYLE="width: 2.2cm; height: 0.5cm; background: #e6e6ff">
+								</P>
+			</TD>
+			<TD WIDTH=2></TD>
+		</TR>
+		<TR>
+			<TD COLSPAN=2 WIDTH=83>
+				<P STYLE="font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt">Solar
+				midday </FONT></FONT>
+				</P>
+			</TD>
+			<TD WIDTH=124>
+				<P><INPUT TYPE=TEXT NAME="MidiLegal" SIZE=8 STYLE="width: 2.2cm; height: 0.5cm; background: #e6e6ff">
+								</P>
+			</TD>
+			<TD WIDTH=2></TD>
+		</TR>
+		<TR>
+			<TD COLSPAN=3 WIDTH=215 HEIGHT=41 VALIGN=TOP>
+				<P STYLE="font-weight: medium"><FONT FACE="Arial, sans-serif"><FONT SIZE=1 STYLE="font-size: 7pt">Angle
+				is measured from vertical.<br>Gnomon is 1m high. Time is in UTC</FONT></FONT></P>
+			</TD>
+		
+		</TR>
+	</TABLE>
+</FORM>
+</div>
+</BODY>
+</HTML>
